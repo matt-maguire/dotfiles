@@ -87,6 +87,12 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "z", lazy.spawn(["mate-screensaver-command", "-l"]), desc="Lock screen"),
+    #Key([], "XF86AudioLowerVolume", lazy.spawn("amixer sset Master 5%-"), desc="Lower Volume by 5%"),
+    #Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer sset Master 5%+"), desc="Raise Volume by 5%"),
+    #Key([], "XF86AudioMute", lazy.spawn("amixer sset Master 1+ toggle"), desc="Mute/Unmute Volume"),
+    #Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"), desc="Play/Pause player"),
+    #Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc="Skip to next"),
+    #Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"), desc="Skip to previous"),
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -147,7 +153,7 @@ layouts = [
 
 widget_defaults = dict(
     font="sans",
-    fontsize=12,
+    fontsize=24,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
@@ -170,7 +176,11 @@ screens = [
                 widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Systray(),
+                widget.Battery(),
+                #widget.BatteryIcon(),
+                #widget.Bluetooth(),
+                widget.PulseVolume(),
+                widget.Systray(icon_size=25),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.QuickExit(),
             ],

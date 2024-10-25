@@ -1,0 +1,57 @@
+(defcfg
+  ;; Place your OS specific configurations here, see: https://github.com/jtroo/kanata
+
+)
+;; The config below uses ANSI, if you are on ISO you will have to modify it.
+(defsrc
+  grv       1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab       q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps      a    s    d    f    g    h    j    k    l    ;    '         ret
+  lsft      z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc                 ralt rmet rctl
+)
+
+(deflayer qwerty
+  @grl       1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab       q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps      a    s    d    f    g    h    j    k    l    ;    '         ret
+  lsft      z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc                 ralt rmet rctl
+)
+
+;; Simply uncomment the Gallium version you wish to use.
+
+
+;; Gallium Rowstag angle modded QX swap reversed
+(deflayer gallium
+  @grl      1    2    3    4    5    6    7    8    9    0    [    ]    bspc
+  tab       b    l    d    c    v    j    f    o    u    ,    -    =    \
+  @cex      n    r    t    s    g    y    h    a    e    i    ;         ret
+  lsft      x    m    w    z    q    k    p    '    /    .    rsft
+  lctl lmet lalt           spc                 ralt rmet rctl
+)
+
+(defalias
+  ;; tap: backtick (grave), hold: toggle layer-switching layer while held
+  grl (tap-hold 200 200 grv (layer-toggle layers))
+  cex (tap-hold 200 200 caps (layer-toggle extend))
+  ;;cex (layer-toggle extend)
+  gal (layer-switch gallium)
+  qwr (layer-switch qwerty)
+)
+
+(deflayer layers
+  _    @qwr @gal _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _
+)
+
+(deflayer extend
+  _    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  _
+  _    esc  mwu  M-[  M-]  _    pgup home up   end  del  esc  ins  _
+  _    lmet mwd  lsft lalt _    pgdn lft  down rght bspc _    _
+  _    C-z  C-x  C-c  C-v  C-z  _    _    _    _    _    _
+  _    _    _              _              _    _    _
+)
