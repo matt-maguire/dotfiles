@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+mate-screensaver&
 ibus-daemon -rxRd
 blueman-applet&
 nm-applet&

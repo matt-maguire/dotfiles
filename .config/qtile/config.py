@@ -275,4 +275,4 @@ def autostart():
     home = os.path.expanduser('~/.config/qtile/autostart.sh')
     subprocess.call(home)
 
-exec_cmd=["mate-screensaver", "--start"]
+# exec_cmd=["mate-screensaver"]
