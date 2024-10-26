@@ -40,3 +40,6 @@ export CVSROOT=/home/mmaguire/Nextcloud/Teaching/cvsroot
 export PATH=$HOME/.config/emacs/bin:$PATH
 
 alias config='/usr/bin/git --git-dir=/home/mmaguire/.cfg/ --work-tree=/home/mmaguire'
+function soundfix () {
+pacmd load-module module-alsa-card device_id="0" name="pci-0000_00_1b.0" card_name="alsa_card.pci-0000_00_1b.0" namereg_fail=false tsched=no fixed_latency_range=no ignore_dB=no deferred_volume=yes use_ucm=yes avoid_resampling=no card_properties="module-udev-detect.discovered=1"
+}
