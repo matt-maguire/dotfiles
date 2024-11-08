@@ -73,6 +73,8 @@ keys = [
         desc="Toggle between split and unsplit sides of stack",
     ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    #Key([], "Sys_Req", lazy.spawn("xfce4-screenshooter"), desc="Print Screen"),
+    Key([mod], "s", lazy.spawn("xfce4-screenshooter"), desc="Print Screen"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
@@ -109,7 +111,7 @@ for vt in range(1, 8):
     )
 
 
-groups = [Group(i) for i in "123456789bldcv"]
+groups = [Group(i) for i in "bldcv123456789"]
 
 for i in groups:
     keys.extend(
@@ -153,7 +155,7 @@ layouts = [
 
 widget_defaults = dict(
     font="sans",
-    fontsize=24,
+    fontsize=12,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
@@ -176,11 +178,11 @@ screens = [
                 widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Battery(),
+                # widget.Battery(),
                 #widget.BatteryIcon(),
                 #widget.Bluetooth(),
                 widget.PulseVolume(),
-                widget.Systray(icon_size=25),
+                widget.Systray(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.QuickExit(),
             ],
@@ -210,6 +212,7 @@ screens = [
                 widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
+                #widget.PulseVolume(),
                 #widget.Systray(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
             ],
